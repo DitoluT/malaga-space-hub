@@ -10,33 +10,141 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as EsIndexRouteImport } from './routes/es/index'
+import { Route as EnIndexRouteImport } from './routes/en/index'
+import { Route as EsGaleriaRouteImport } from './routes/es/galeria'
+import { Route as EsEquipoRouteImport } from './routes/es/equipo'
+import { Route as EnTeamRouteImport } from './routes/en/team'
+import { Route as EnGalleryRouteImport } from './routes/en/gallery'
+import { Route as EsSubsistemasSlugRouteImport } from './routes/es/subsistemas.$slug'
+import { Route as EnSubsystemsSlugRouteImport } from './routes/en/subsystems.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EsIndexRoute = EsIndexRouteImport.update({
+  id: '/es/',
+  path: '/es/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EnIndexRoute = EnIndexRouteImport.update({
+  id: '/en/',
+  path: '/en/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EsGaleriaRoute = EsGaleriaRouteImport.update({
+  id: '/es/galeria',
+  path: '/es/galeria',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EsEquipoRoute = EsEquipoRouteImport.update({
+  id: '/es/equipo',
+  path: '/es/equipo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EnTeamRoute = EnTeamRouteImport.update({
+  id: '/en/team',
+  path: '/en/team',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EnGalleryRoute = EnGalleryRouteImport.update({
+  id: '/en/gallery',
+  path: '/en/gallery',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EsSubsistemasSlugRoute = EsSubsistemasSlugRouteImport.update({
+  id: '/es/subsistemas/$slug',
+  path: '/es/subsistemas/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EnSubsystemsSlugRoute = EnSubsystemsSlugRouteImport.update({
+  id: '/en/subsystems/$slug',
+  path: '/en/subsystems/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/en/gallery': typeof EnGalleryRoute
+  '/en/team': typeof EnTeamRoute
+  '/es/equipo': typeof EsEquipoRoute
+  '/es/galeria': typeof EsGaleriaRoute
+  '/en/': typeof EnIndexRoute
+  '/es/': typeof EsIndexRoute
+  '/en/subsystems/$slug': typeof EnSubsystemsSlugRoute
+  '/es/subsistemas/$slug': typeof EsSubsistemasSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/en/gallery': typeof EnGalleryRoute
+  '/en/team': typeof EnTeamRoute
+  '/es/equipo': typeof EsEquipoRoute
+  '/es/galeria': typeof EsGaleriaRoute
+  '/en': typeof EnIndexRoute
+  '/es': typeof EsIndexRoute
+  '/en/subsystems/$slug': typeof EnSubsystemsSlugRoute
+  '/es/subsistemas/$slug': typeof EsSubsistemasSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/en/gallery': typeof EnGalleryRoute
+  '/en/team': typeof EnTeamRoute
+  '/es/equipo': typeof EsEquipoRoute
+  '/es/galeria': typeof EsGaleriaRoute
+  '/en/': typeof EnIndexRoute
+  '/es/': typeof EsIndexRoute
+  '/en/subsystems/$slug': typeof EnSubsystemsSlugRoute
+  '/es/subsistemas/$slug': typeof EsSubsistemasSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/en/gallery'
+    | '/en/team'
+    | '/es/equipo'
+    | '/es/galeria'
+    | '/en/'
+    | '/es/'
+    | '/en/subsystems/$slug'
+    | '/es/subsistemas/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/en/gallery'
+    | '/en/team'
+    | '/es/equipo'
+    | '/es/galeria'
+    | '/en'
+    | '/es'
+    | '/en/subsystems/$slug'
+    | '/es/subsistemas/$slug'
+  id:
+    | '__root__'
+    | '/'
+    | '/en/gallery'
+    | '/en/team'
+    | '/es/equipo'
+    | '/es/galeria'
+    | '/en/'
+    | '/es/'
+    | '/en/subsystems/$slug'
+    | '/es/subsistemas/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  EnGalleryRoute: typeof EnGalleryRoute
+  EnTeamRoute: typeof EnTeamRoute
+  EsEquipoRoute: typeof EsEquipoRoute
+  EsGaleriaRoute: typeof EsGaleriaRoute
+  EnIndexRoute: typeof EnIndexRoute
+  EsIndexRoute: typeof EsIndexRoute
+  EnSubsystemsSlugRoute: typeof EnSubsystemsSlugRoute
+  EsSubsistemasSlugRoute: typeof EsSubsistemasSlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,12 +156,85 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/es/': {
+      id: '/es/'
+      path: '/es'
+      fullPath: '/es/'
+      preLoaderRoute: typeof EsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/en/': {
+      id: '/en/'
+      path: '/en'
+      fullPath: '/en/'
+      preLoaderRoute: typeof EnIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/es/galeria': {
+      id: '/es/galeria'
+      path: '/es/galeria'
+      fullPath: '/es/galeria'
+      preLoaderRoute: typeof EsGaleriaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/es/equipo': {
+      id: '/es/equipo'
+      path: '/es/equipo'
+      fullPath: '/es/equipo'
+      preLoaderRoute: typeof EsEquipoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/en/team': {
+      id: '/en/team'
+      path: '/en/team'
+      fullPath: '/en/team'
+      preLoaderRoute: typeof EnTeamRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/en/gallery': {
+      id: '/en/gallery'
+      path: '/en/gallery'
+      fullPath: '/en/gallery'
+      preLoaderRoute: typeof EnGalleryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/es/subsistemas/$slug': {
+      id: '/es/subsistemas/$slug'
+      path: '/es/subsistemas/$slug'
+      fullPath: '/es/subsistemas/$slug'
+      preLoaderRoute: typeof EsSubsistemasSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/en/subsystems/$slug': {
+      id: '/en/subsystems/$slug'
+      path: '/en/subsystems/$slug'
+      fullPath: '/en/subsystems/$slug'
+      preLoaderRoute: typeof EnSubsystemsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  EnGalleryRoute: EnGalleryRoute,
+  EnTeamRoute: EnTeamRoute,
+  EsEquipoRoute: EsEquipoRoute,
+  EsGaleriaRoute: EsGaleriaRoute,
+  EnIndexRoute: EnIndexRoute,
+  EsIndexRoute: EsIndexRoute,
+  EnSubsystemsSlugRoute: EnSubsystemsSlugRoute,
+  EsSubsistemasSlugRoute: EsSubsistemasSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { createStart } from '@tanstack/react-start'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+  }
+}
