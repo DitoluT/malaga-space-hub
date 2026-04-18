@@ -305,9 +305,9 @@ export function HomePage({
                   className={cn(
                     "rounded-full px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider",
                     s.tier === "platinum" && "bg-primary/20 text-primary",
-                    s.tier === "gold" && "bg-amber-500/20 text-amber-300",
+                    s.tier === "gold" && "bg-success/20 text-success",
                     s.tier === "silver" && "bg-muted text-muted-foreground",
-                    s.tier === "bronze" && "bg-orange-700/20 text-orange-300",
+                    s.tier === "bronze" && "bg-accent/20 text-accent-foreground",
                   )}
                 >
                   {s.tier}
